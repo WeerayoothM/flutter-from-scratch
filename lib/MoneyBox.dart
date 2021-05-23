@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 // build container prototypes
 class MoneyBox extends StatelessWidget {
-  String title; // ชื่อรายการ
+  String title; // ชื่อรายการ / ชื่อสกุลเงิน
   double amount; // จำนวนเงิน
   Color color; // สีกล่อง
   double size; // ขนาดกล่อง
@@ -29,7 +29,7 @@ class MoneyBox extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              '฿${NumberFormat('#,###').format(amount)}',
+              '${NumberFormat('#,###.##').format(amount)}',
               style: TextStyle(
                   fontSize: 25,
                   color: Colors.white,
