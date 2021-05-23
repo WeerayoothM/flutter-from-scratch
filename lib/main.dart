@@ -43,11 +43,13 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Flutter & Dart'),
         centerTitle: false,
       ),
-      body: Center(
-        child: ListView(
-          children: getData(25),
-        ),
-      ),
+      body: ListView.builder(
+          itemCount: 15,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: Text('เมนู ${index + 1}'),
+            );
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: addNumber,
         child: Icon(Icons.add),
@@ -69,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-// เตรียมข้อมูล return type
+// เตรียมข้อมูล return type with List
   List<Widget> getData(int count) {
     List<Widget> data = [];
     for (var i = 0; i < count; i++) {
