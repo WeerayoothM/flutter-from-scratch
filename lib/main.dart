@@ -27,11 +27,11 @@ class _MyHomePageState extends State<MyHomePage> {
   // menus
   List<FoodMenu> menu = [
     FoodMenu('กุ้งเผา', '500',
-        '../assets/images/1584346965_685720fc428113fefffeaff8e7a02f99.jpeg'),
+        'assets/images/1584346965_685720fc428113fefffeaff8e7a02f99.jpeg'),
     FoodMenu('กะเพราหมูสับ', '60',
-        '../assets/images/8ef21e7e11312bcb0af4809098025695.jpeg'),
-    FoodMenu('ส้มตำ', '50',
-        '../assets/images/7E68135B4E03435881B219B331FB9169.jpeg'),
+        'assets/images/8ef21e7e11312bcb0af4809098025695.jpeg'),
+    FoodMenu(
+        'ส้มตำ', '50', 'assets/images/7E68135B4E03435881B219B331FB9169.jpeg'),
   ];
 
 // แสดงผลข้อมูล
