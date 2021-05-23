@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'FoodMenu.dart';
+import 'MoneyBox.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "My App",
       home: MyHomePage(),
-      theme: ThemeData(primarySwatch: Colors.lightGreen),
+      theme: ThemeData(primarySwatch: Colors.green),
     );
   }
 }
@@ -28,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'บัญชีรายรับรายจ่าย',
+          'บัญชีของฉัน',
           style: TextStyle(
               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -37,127 +38,19 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Padding(
           padding: EdgeInsets.all(10),
           child: Column(children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              height: 130,
-              decoration: BoxDecoration(
-                  color: Colors.lightBlue,
-                  borderRadius: BorderRadius.circular(8)),
-              // border: Border.all(width: 2, color: Colors.pink),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'ยอดคงเหลือ',
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    '฿32,000',
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
-            ),
+            MoneyBox('ยอดคงเหลือ', 32000, Colors.blue, 120),
             SizedBox(
-              height: 5,
+              height: 10,
             ),
-            Container(
-              padding: EdgeInsets.all(10),
-              height: 100,
-              decoration: BoxDecoration(
-                  color: Colors.green, borderRadius: BorderRadius.circular(8)),
-              // border: Border.all(width: 2, color: Colors.pink),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'รายรับ',
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Expanded(
-                      child: Text(
-                    '฿15,000',
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ))
-                ],
-              ),
-            ),
+            MoneyBox('รายรับ', 12000, Colors.lightGreen, 100),
             SizedBox(
-              height: 5,
+              height: 10,
             ),
-            Container(
-              padding: EdgeInsets.all(10),
-              height: 100,
-              decoration: BoxDecoration(
-                  color: Colors.orange, borderRadius: BorderRadius.circular(8)),
-              // border: Border.all(width: 2, color: Colors.pink),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'รายจ่าย',
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Expanded(
-                      child: Text(
-                    '฿5,000',
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ))
-                ],
-              ),
-            ),
+            MoneyBox('รายจ่าย', 15000, Colors.red, 100),
             SizedBox(
-              height: 5,
+              height: 10,
             ),
-            Container(
-              padding: EdgeInsets.all(10),
-              height: 100,
-              decoration: BoxDecoration(
-                  color: Colors.orange, borderRadius: BorderRadius.circular(8)),
-              // border: Border.all(width: 2, color: Colors.pink),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'ค้างชำระ',
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Expanded(
-                      child: Text(
-                    '฿5,000',
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ))
-                ],
-              ),
-            )
+            MoneyBox('ค้างชำระ', 2000, Colors.pink, 100),
           ])),
     );
   }
