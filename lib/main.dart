@@ -1,66 +1,83 @@
-import 'package:flutter/material.dart';
-import 'FoodMenu.dart';
-import 'MoneyBox.dart';
-
-void main() {
-  runApp(MyApp());
+void main() async {
+  print(await loginUser());
+  print('work task');
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "My App",
-      home: MyHomePage(),
-      theme: ThemeData(primarySwatch: Colors.green),
-    );
-  }
+Future<String> loginUser() async {
+  // import Data
+  var user = await getUserFromDatabase();
+  return user;
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
+// ข้อมูลที่จะได้ ใน อนาคต ต้องรอ 10 วิ
+Future<String> getUserFromDatabase() {
+  // get Data
+  return Future.delayed(Duration(seconds: 10), () => 'Weerayooth');
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int number = 0;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    print('call initState');
-  }
+// import 'package:flutter/material.dart';
+// import 'FoodMenu.dart';
+// import 'MoneyBox.dart';
 
-// แสดงผลข้อมูล
-  @override
-  Widget build(BuildContext context) {
-    print('call build');
+// void main() {
+//   runApp(MyApp());
+// }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'บัญชีของฉัน',
-          style: TextStyle(
-              fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: false,
-      ),
-      body: Column(
-        children: [
-          Text(
-            'Message${number.toString()}',
-            style: TextStyle(fontSize: 30),
-          )
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          setState(() {
-            number++;
-          });
-        },
-      ),
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: "My App",
+//       home: MyHomePage(),
+//       theme: ThemeData(primarySwatch: Colors.green),
+//     );
+//   }
+// }
+
+// class MyHomePage extends StatefulWidget {
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
+
+// class _MyHomePageState extends State<MyHomePage> {
+//   int number = 0;
+//   @override
+//   void initState() {
+//     // TODO: implement initState
+//     super.initState();
+//     print('call initState');
+//   }
+
+// // แสดงผลข้อมูล
+//   @override
+//   Widget build(BuildContext context) {
+//     print('call build');
+
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(
+//           'บัญชีของฉัน',
+//           style: TextStyle(
+//               fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold),
+//         ),
+//         centerTitle: false,
+//       ),
+//       body: Column(
+//         children: [
+//           Text(
+//             'Message${number.toString()}',
+//             style: TextStyle(fontSize: 30),
+//           )
+//         ],
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         child: Icon(Icons.add),
+//         onPressed: () {
+//           setState(() {
+//             number++;
+//           });
+//         },
+//       ),
+//     );
+//   }
+// }
