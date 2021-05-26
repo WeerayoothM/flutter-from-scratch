@@ -23,6 +23,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int number = 0; // create state
+  double _weight = 0;
+  double _water = 0;
 
   // menus
   List<FoodMenu> menu = [
@@ -33,6 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
     FoodMenu(
         'ส้มตำ', '50', 'assets/images/7E68135B4E03435881B219B331FB9169.jpeg'),
   ];
+
+  TextEditingController weightController = new TextEditingController();
 
 // แสดงผลข้อมูล
   @override
@@ -54,26 +58,29 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('เลือกเมนูอาหาร'),
         centerTitle: false,
       ),
-      body: ListView.builder(
-          itemCount: menu.length,
-          itemBuilder: (BuildContext context, int index) {
-            FoodMenu food = menu[index]; // food is Object
-            return ListTile(
-              leading: Image.asset(food.imgFood),
-              title: Text(
-                food.name,
-                style: TextStyle(fontSize: 20),
-              ),
-              subtitle: Text(
-                'ราคา ${food.price} บาท',
-              ),
-              onTap: () {
-                print('คุณเลือกเมนูอาหารชื่อ ${food.name}');
-              },
-            );
-          }),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'คุณควรดื่มน้ำวันละ',
+            style: TextStyle(fontSize: 30),
+          ),
+          Text(
+            '${_water.toString()}',
+            style: TextStyle(fontSize: 40),
+          ),
+          Text(
+            'มิลลิลิตร',
+            style: TextStyle(fontSize: 30),
+          ),
+          TextField(
+            controller: weightController,
+            decoration: InputDecoration(hintText: 'กรอกน้ำหนักของคุณ (kg)'),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: addNumber,
+        onPressed: calculate,
         child: Icon(Icons.add),
       ),
     );
@@ -91,6 +98,13 @@ class _MyHomePageState extends State<MyHomePage> {
         number = number - 1;
       });
     }
+  }
+
+  void calculate() {
+    setState(() {
+      _weight = double.parse(weightController.text);
+      _water = double.parse(weightController.text) * 30 * 2.2 / 2;
+    });
   }
 
 // เตรียมข้อมูล return type with List
